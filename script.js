@@ -69,6 +69,9 @@ document.addEventListener('DOMContentLoaded', () => {
         floatingScript.style.top = (e.pageY + 15) + 'px';
     });
 
+    // Reviews System
+    initReviewsSystem();
+
     // Settings System
     initSettingsSystem();
 
@@ -104,6 +107,156 @@ function initParticles() {
         },
         "retina_detect": true
     });
+}
+
+function initReviewsSystem() {
+    const starRating = document.querySelectorAll('.star-rating i');
+    const ratingInput = document.getElementById('rating');
+    const reviewForm = document.getElementById('reviewForm');
+    const reviewsGrid = document.getElementById('reviewsGrid');
+
+    // Star rating interaction
+    starRating.forEach(star => {
+        star.addEventListener('click', function() {
+            const rating = this.getAttribute('data-rating');
+            ratingInput.value = rating;
+            
+            starRating.forEach(s => {
+                s.classList.remove('fas', 'active');
+                s.classList.add('far');
+            });
+            
+            for (let i = 0; i < rating; i++) {
+                starRating[i].classList.remove('far');
+                starRating[i].classList.add('fas', 'active');
+            }
+        });
+
+        star.addEventListener('mouseover', function() {
+            const rating = this.getAttribute('data-rating');
+            starRating.forEach(s => {
+                s.classList.remove('fas');
+                s.classList.add('far');
+            });
+            
+            for (let i = 0; i < rating; i++) {
+                starRating[i].classList.remove('far');
+                starRating[i].classList.add('fas');
+            }
+        });
+
+        star.addEventListener('mouseout', function() {
+            const currentRating = ratingInput.value;
+            starRating.forEach(s => {
+                s.classList.remove('fas');
+                s.classList.add('far');
+            });
+            
+            if (currentRating) {
+                for (let i = 0; i < currentRating; i++) {
+                    starRating[i].classList.remove('far');
+                    starRating[i].classList.add('fas', 'active');
+                }
+            }
+        });
+    });
+
+    // Review form submission
+    reviewForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const userName = document.getElementById('userName').value;
+        const rating = ratingInput.value;
+        const reviewText = document.getElementById('reviewText').value;
+        
+        if (!userName || !rating || !reviewText) {
+            alert('Please fill in all fields');
+            return;
+        }
+
+        const review = {
+            id: Date.now(),
+            userName: document.getElementById('anonymousReviews')?.checked ? 'Anonymous' : userName,
+            rating: parseInt(rating),
+            text: reviewText,
+            date: new Date().toLocaleDateString()
+        };
+
+        saveReview(review);
+        displayReviews();
+        updateAverageRating();
+        
+        // Reset form
+        reviewForm.reset();
+        starRating.forEach(s => {
+            s.classList.remove('fas', 'active');
+            s.classList.add('far');
+        });
+        ratingInput.value = '';
+        
+        alert('Review submitted successfully!');
+    });
+
+    // Load and display reviews
+    displayReviews();
+    updateAverageRating();
+}
+
+function saveReview(review) {
+    const reviews = getReviews();
+    reviews.unshift(review); // Add to beginning
+    localStorage.setItem('luaHubReviews', JSON.stringify(reviews));
+}
+
+function getReviews() {
+    return JSON.parse(localStorage.getItem('luaHubReviews') || '[]');
+}
+
+function displayReviews() {
+    const reviewsGrid = document.getElementById('reviewsGrid');
+    const reviews = getReviews();
+    
+    reviewsGrid.innerHTML = '';
+    
+    if (reviews.length === 0) {
+        reviewsGrid.innerHTML = '<p class="no-reviews">No reviews yet. Be the first to review!</p>';
+        return;
+    }
+    
+    reviews.forEach(review => {
+        const reviewCard = document.createElement('div');
+        reviewCard.className = 'review-card';
+        reviewCard.innerHTML = `
+            <div class="review-header">
+                <img src="https://cdn.discordapp.com/embed/avatars/${Math.floor(Math.random() * 5)}.png" alt="${review.userName}" class="review-avatar">
+                <div class="review-user">
+                    <h3>${review.userName}</h3>
+                    <div class="review-stars">
+                        ${'<i class="fas fa-star"></i>'.repeat(review.rating)}
+                        ${'<i class="far fa-star"></i>'.repeat(5 - review.rating)}
+                    </div>
+                </div>
+            </div>
+            <p class="review-text">${review.text}</p>
+            <span class="review-date">${review.date}</span>
+        `;
+        reviewsGrid.appendChild(reviewCard);
+    });
+}
+
+function updateAverageRating() {
+    const reviews = getReviews();
+    if (reviews.length === 0) {
+        document.getElementById('averageRating').textContent = '0.0';
+        document.getElementById('reviewCount').textContent = 'No reviews yet';
+        return;
+    }
+    
+    const totalRating = reviews.reduce((sum, review) => sum + review.rating, 0);
+    const averageRating = (totalRating / reviews.length).toFixed(1);
+    
+    document.getElementById('averageRating').textContent = averageRating;
+    document.getElementById('reviewCount').textContent = `Based on ${reviews.length} reviews`;
 }
 
 function initSettingsSystem() {
