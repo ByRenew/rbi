@@ -518,4 +518,140 @@ body {
         height: 60px;
         font-size: 1.5rem;
     }
+/* Add these styles to your existing style.css file */
+
+/* Staff Page Styles */
+.staff-content {
+    padding: 2rem 0;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    color: var(--dark-blue);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.page-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    text-align: center;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.staff-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.staff-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+}
+
+.staff-card:hover {
+    transform: translateY(-5px);
+}
+
+.staff-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.staff-avatar {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--light-blue) 0%, var(--primary-blue) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+.staff-info h3 {
+    font-size: 1.3rem;
+    color: var(--dark-blue);
+    margin-bottom: 0.3rem;
+}
+
+.staff-role {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.staff-role.admin {
+    background-color: #ff6b6b;
+    color: white;
+}
+
+.staff-role.mod {
+    background-color: #4ecdc4;
+    color: white;
+}
+
+.staff-role.manager {
+    background-color: #ffd166;
+    color: #333;
+}
+
+.staff-role.staff {
+    background-color: #6a89cc;
+    color: white;
+}
+
+.staff-details p {
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+}
+
+.staff-stats {
+    display: flex;
+    justify-content: space-between;
+}
+
+.staff-stats .stat {
+    text-align: center;
+}
+
+.staff-stats .stat-number {
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+}
+
+.staff-stats .stat-label {
+    font-size: 0.8rem;
+    color: var(--text-dark);
+}
+
+/* Responsive adjustments for staff page */
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 2rem;
+    }
+    
+    .page-subtitle {
+        font-size: 1rem;
+    }
+    
+    .staff-grid {
+        grid-template-columns: 1fr;
+    }
 }
