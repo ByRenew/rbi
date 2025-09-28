@@ -277,6 +277,104 @@
     <div class="floating-script" id="floatingScript"></div>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="script.js"></script>
-</body>
-</html>
+    <script>
+        // script.js
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize particles
+            initParticles();
+
+            // Navigation and page management
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pages = document.querySelectorAll('.page');
+            const navMenu = document.getElementById('nav-links');
+            const burger = document.getElementById('burger-menu');
+
+            // Burger Menu Toggle
+            burger.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                burger.classList.toggle('toggle');
+            });
+
+            navLinks.forEach(link => {
+                if (link.getAttribute('target') === '_blank') return;
+                
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    const targetPageId = link.getAttribute('data-page');
+                    showPage(targetPageId);
+                    
+                    navLinks.forEach(navLink => navLink.classList.remove('active'));
+                    link.classList.add('active');
+                    
+                    if(navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        burger.classList.remove('toggle');
+                    }
+                });
+            });
+
+            // Copy Script Button
+            const copyBtn = document.getElementById('copyBtn');
+            const scriptCode = document.getElementById('script').innerText;
+            
+            copyBtn.addEventListener('click', () => {
+                navigator.clipboard.writeText(scriptCode).then(() => {
+                    const originalText = copyBtn.innerText;
+                    copyBtn.innerText = 'Copied!';
+                    
+                    setTimeout(() => {
+                        copyBtn.innerText = originalText;
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy: ', err);
+                });
+            });
+
+            // Floating Script Effect
+            const scriptElement = document.getElementById('script');
+            const floatingScript = document.getElementById('floatingScript');
+
+            scriptElement.addEventListener('mouseenter', function() {
+                floatingScript.textContent = this.textContent.trim();
+                floatingScript.style.opacity = '1';
+            });
+
+            scriptElement.addEventListener('mouseleave', function() {
+                floatingScript.style.opacity = '0';
+            });
+
+            document.addEventListener('mousemove', function(e) {
+                floatingScript.style.left = (e.pageX + 15) + 'px';
+                floatingScript.style.top = (e.pageY + 15) + 'px';
+            });
+
+            // Reviews System
+            initReviewsSystem();
+
+            // Settings System
+            initSettingsSystem();
+
+            // Load saved settings
+            loadSettings();
+        });
+
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.remove('active');
+                if (page.id === pageId) {
+                    page.classList.add('active');
+                }
+            });
+        }
+
+        function initParticles() {
+            particlesJS("particles-js", {
+                "particles": {
+                    "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                    "color": { "value": "#1a73e8" },
+                    "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" } },
+                    "opacity": { "value": 0.5, "random": false, "anim": { "enable": false } },
+                    "size": { "value": 3, "random": true, "anim": { "enable": false } },
+                    "line_linked": { "enable": true, "distance": 150, "color": "#1a73e8", "opacity": 0.4, "width
