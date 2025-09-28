@@ -88,7 +88,7 @@ body {
 }
 
 .logo:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
@@ -299,21 +299,23 @@ body {
     color: var(--dark-blue);
 }
 
-/* About Page */
-.about-content {
+/* Credits Page - FIXED CENTER ALIGNMENT */
+.credits-content {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: calc(100vh - 100px);
+    width: 100%;
 }
 
 .profile-card {
     background: white;
     border-radius: 12px;
     width: 100%;
-    max-width: 600px;
+    max-width: 500px;
     box-shadow: var(--shadow);
     overflow: hidden;
+    margin: 0 auto;
 }
 
 .profile-header {
@@ -354,6 +356,7 @@ body {
 
 .profile-info {
     padding: 30px;
+    text-align: center;
 }
 
 .profile-info h3 {
@@ -380,7 +383,7 @@ body {
 
 .stat-number {
     display: block;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 700;
     color: var(--primary-blue);
 }
@@ -388,6 +391,10 @@ body {
 .stat-label {
     font-size: 0.9rem;
     color: var(--text-dark);
+}
+
+.skills {
+    margin-top: 30px;
 }
 
 .skills h4 {
@@ -399,15 +406,16 @@ body {
 .skills ul {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
 }
 
 .skills li {
     background: var(--background-blue);
-    padding: 8px 15px;
-    border-radius: 20px;
+    padding: 10px;
+    border-radius: 8px;
     text-align: center;
+    font-weight: 500;
 }
 
 /* Footer */
@@ -495,5 +503,15 @@ body {
     
     .skills ul {
         grid-template-columns: 1fr;
+    }
+    
+    .profile-card {
+        margin: 0 20px;
+    }
+    
+    .logo.large {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
     }
 }
