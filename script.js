@@ -4,11 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
     particlesJS("particles-js", {
         "particles": {
             "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-            "color": { "value": "#e50914" },
+            "color": { "value": "#1a73e8" },
             "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" } },
             "opacity": { "value": 0.5, "random": false, "anim": { "enable": false } },
             "size": { "value": 3, "random": true, "anim": { "enable": false } },
-            "line_linked": { "enable": true, "distance": 150, "color": "#e50914", "opacity": 0.4, "width": 1 },
+            "line_linked": { "enable": true, "distance": 150, "color": "#1a73e8", "opacity": 0.4, "width": 1 },
             "move": { "enable": true, "speed": 4, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
         },
         "interactivity": {
@@ -62,19 +62,51 @@ document.addEventListener('DOMContentLoaded', () => {
     
 
     // --- Copy Script Button ---
-    const copyBtn = document.getElementById('copy-btn');
-    const scriptCode = document.getElementById('script-code').innerText;
+    const copyBtn = document.getElementById('copyBtn');
+    const scriptCode = document.getElementById('script').innerText;
     
     copyBtn.addEventListener('click', () => {
         navigator.clipboard.writeText(scriptCode).then(() => {
-            const originalText = copyBtn.querySelector('span').innerText;
-            copyBtn.querySelector('span').innerText = 'Copied!';
+            const originalText = copyBtn.innerText;
+            copyBtn.innerText = 'Copied!';
             
             setTimeout(() => {
-                copyBtn.querySelector('span').innerText = originalText;
+                copyBtn.innerText = originalText;
             }, 2000);
         }).catch(err => {
             console.error('Failed to copy: ', err);
+        });
+    });
+
+    // --- Floating Script Effect ---
+    const scriptElement = document.getElementById('script');
+    const floatingScript = document.getElementById('floatingScript');
+
+    scriptElement.addEventListener('mouseenter', function() {
+        floatingScript.textContent = this.textContent.trim();
+        floatingScript.style.opacity = '1';
+    });
+
+    scriptElement.addEventListener('mouseleave', function() {
+        floatingScript.style.opacity = '0';
+    });
+
+    document.addEventListener('mousemove', function(e) {
+        floatingScript.style.left = (e.pageX + 15) + 'px';
+        floatingScript.style.top = (e.pageY + 15) + 'px';
+    });
+
+    // --- Script Cards Copy Functionality ---
+    document.querySelectorAll('.script-copy').forEach(button => {
+        button.addEventListener('click', function() {
+            const scriptText = this.parentElement.querySelector('.script-code').textContent;
+            navigator.clipboard.writeText(scriptText).then(() => {
+                const originalText = this.textContent;
+                this.textContent = 'Copied!';
+                setTimeout(() => {
+                    this.textContent = originalText;
+                }, 2000);
+            });
         });
     });
 });
