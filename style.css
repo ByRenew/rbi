@@ -299,8 +299,8 @@ body {
     color: var(--dark-blue);
 }
 
-/* Credits Page - FIXED CENTER ALIGNMENT */
-.credits-content {
+/* About Page */
+.about-content {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -403,14 +403,19 @@ body {
     margin-bottom: 15px;
 }
 
-.skills ul {
-    list-style: none;
+.skills-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 10px;
+    margin-top: 15px;
 }
 
-.skills li {
+.skill-item {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 0.9rem;
     background: var(--background-blue);
     padding: 10px;
     border-radius: 8px;
@@ -501,7 +506,7 @@ body {
         grid-template-columns: 1fr;
     }
     
-    .skills ul {
+    .skills-grid {
         grid-template-columns: 1fr;
     }
     
