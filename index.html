@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RBI Hub</title>
+    <title>Random Hub</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -15,15 +15,14 @@
         <div class="container navbar">
             <a href="#" class="brand-title">
                 <div class="logo">
-                    <img src="logo.png" alt="RBI Hub Logo">
+                    <i class="fas fa-moon"></i>
                 </div>
-                RBI Hub
+                Random Hub
             </a>
             <nav>
                 <ul class="nav-links" id="nav-links">
                     <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
-                    <li><a href="#" class="nav-link" data-page="scripts">Scripts</a></li>
-                    <li><a href="#" class="nav-link" data-page="credits">Credits</a></li>
+                    <li><a href="#" class="nav-link" data-page="about">About</a></li>
                     <li><a href="https://dsc.gg/rbi" class="nav-link" target="_blank">Discord</a></li>
                 </ul>
             </nav>
@@ -42,21 +41,16 @@
                 <div class="discord-card">
                     <div class="discord-header">
                         <div class="logo large">
-                            <img src="logo.png" alt="RBI Hub Logo">
+                            <i class="fas fa-moon"></i>
                         </div>
-                        <h1>RBI Hub</h1>
+                        <h1>Random Hub</h1>
                         <div class="members">200+ Members</div>
                         <a href="https://dsc.gg/rbi" class="join-btn" target="_blank">JOIN DISCORD</a>
                     </div>
                     
                     <div class="discord-content">
-                        <div class="key-info">
-                            <i class="fas fa-key"></i>
-                            <span>Access key available in the #key channel of our Discord server.</span>
-                        </div>
-                        
                         <div class="script-section">
-                            <h2>RBI Hub Scripts</h2>
+                            <h2>Random Hub Scripts</h2>
                             <div class="script-container" id="script">
                                 loadstring(game:HttpGet("https://cdn.authguard.org/virtual-file/1468a483ed964ac09715d5605df435e3"))()
                                 <button class="copy-btn" id="copyBtn">Copy</button>
@@ -74,7 +68,7 @@
                     <div class="feature-card">
                         <i class="fas fa-shield-alt"></i>
                         <h3>Safe & Secure</h3>
-                        <p>All scripts are thoroughly tested for safety and performance.</p>
+                        <p>Obfuscated thoroughly with AuthGuard for maximum security.</p>
                     </div>
                     <div class="feature-card">
                         <i class="fas fa-users"></i>
@@ -85,56 +79,47 @@
             </div>
         </section>
 
-        <!-- Scripts Page -->
-        <section id="scripts" class="page">
-            <h2 class="section-title">Our Scripts</h2>
-            <div class="scripts-grid">
-                <div class="script-card">
-                    <h3>RBI Hub Main</h3>
-                    <div class="script-code">loadstring(game:HttpGet("https://cdn.authguard.org/virtual-file/1468a483ed964ac09715d5605df435e3"))()</div>
-                    <button class="btn script-copy">Copy Script</button>
-                </div>
-                <div class="script-card">
-                    <h3>RBI Utilities</h3>
-                    <div class="script-code">loadstring(game:HttpGet("https://example.com/rbi-utilities"))()</div>
-                    <button class="btn script-copy">Copy Script</button>
-                </div>
-                <div class="script-card">
-                    <h3>RBI Admin</h3>
-                    <div class="script-code">loadstring(game:HttpGet("https://example.com/rbi-admin"))()</div>
-                    <button class="btn script-copy">Copy Script</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Credits Page -->
-        <section id="credits" class="page">
-            <h2 class="section-title">Our Team</h2>
-            <div class="credits-grid">
-                <div class="credit-card">
-                    <img src="https://cdn.discordapp.com/attachments/1396322574203359333/1418482971400470649/44737895a1d588d1855a3b1a88f34106.png" alt=".developed">
-                    <h3>.developed</h3>
-                    <p>Owner and Dev</p>
-                </div>
-                <div class="credit-card">
-                    <img src="https://cdn.discordapp.com/attachments/1396322574203359333/1418483481914114208/25992017dc4d81d2c71a73920f81f167.png" alt="z3r0d4">
-                    <h3>z3r0d4</h3>
-                    <p>Co-owner and Dev</p>
-                </div>
-                <div class="credit-card">
-                    <img src="https://cdn.discordapp.com/attachments/1396322574203359333/1418483689184301096/ba8d7e0e2dc77359360bf39c55712e0b-1.png" alt="goodgamerytbro_77520">
-                    <h3>goodgamerytbro_77520</h3>
-                    <p>Lead Dev</p>
-                </div>
-                <div class="credit-card">
-                    <img src="https://cdn.discordapp.com/attachments/1396322574203359333/1418483912614875206/43e0494dc00db00d524b16d621dcc82b.png" alt="azyyza">
-                    <h3>azyyza</h3>
-                    <p>Dev</p>
-                </div>
-                <div class="credit-card">
-                    <img src="https://cdn.discordapp.com/attachments/1396322574203359333/1418484955088027729/97ebf66b5bc1a91a816cbd0808b42ce9.png" alt="ypgqn">
-                    <h3>ypgqn</h3>
-                    <p>UI Designer and Helper</p>
+        <!-- About Page -->
+        <section id="about" class="page">
+            <div class="about-content">
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <img src="https://cdn.discordapp.com/avatars/1145494169742221372/1e43522556d14ba1b469b9f303a39620.webp" alt="Exvy" class="profile-pic">
+                        <h2>Exvy</h2>
+                        <a href="https://guns.lol/envysplague" class="profile-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i>
+                            guns.lol/envysplague
+                        </a>
+                    </div>
+                    <div class="profile-info">
+                        <h3>About Me</h3>
+                        <p>Developer and creator of Random Hub. Passionate about creating powerful and secure scripting solutions for the gaming community.</p>
+                        
+                        <div class="profile-stats">
+                            <div class="stat">
+                                <span class="stat-number">200+</span>
+                                <span class="stat-label">Community Members</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">5+</span>
+                                <span class="stat-label">Scripts Created</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">100%</span>
+                                <span class="stat-label">AuthGuard Protected</span>
+                            </div>
+                        </div>
+                        
+                        <div class="skills">
+                            <h4>Skills & Expertise</h4>
+                            <ul>
+                                <li>Lua Scripting</li>
+                                <li>Security Obfuscation</li>
+                                <li>UI/UX Design</li>
+                                <li>Community Management</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -142,7 +127,7 @@
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2023 RBI Hub. All rights reserved. | <a href="https://dsc.gg/rbi" target="_blank">Join our Discord</a></p>
+            <p>&copy; 2023 Random Hub. All rights reserved. | <a href="https://dsc.gg/rbi" target="_blank">Join our Discord</a></p>
         </div>
     </footer>
 
