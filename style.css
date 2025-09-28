@@ -44,7 +44,7 @@ body {
     padding: 0 20px;
 }
 
-/* Header Styles */
+/* Header Styles - FIXED */
 .header {
     background: var(--header-bg);
     backdrop-filter: blur(10px);
@@ -60,6 +60,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 
 .brand-title {
@@ -70,6 +71,8 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-left: 0;
+    padding-left: 0;
 }
 
 /* Logo */
