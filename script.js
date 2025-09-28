@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    
     particlesJS("particles-js", {
         "particles": {
             "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
@@ -19,11 +18,39 @@ document.addEventListener('DOMContentLoaded', () => {
         "retina_detect": true
     });
 
-    
     const navLinks = document.querySelectorAll('.nav-link');
     const pages = document.querySelectorAll('.page');
     const navMenu = document.getElementById('nav-links');
     const burger = document.getElementById('burger-menu');
+
+    // Function to show page based on URL
+    function showPageFromURL() {
+        const path = window.location.pathname;
+        let targetPage = 'home';
+        
+        if (path.includes('/about')) {
+            targetPage = 'about';
+        }
+        
+        // Show the correct page
+        pages.forEach(page => {
+            page.classList.remove('active');
+            if (page.id === targetPage) {
+                page.classList.add('active');
+            }
+        });
+        
+        // Update active nav link
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('data-page') === targetPage) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    // Check URL on page load
+    showPageFromURL();
 
     // --- Burger Menu Toggle ---
     burger.addEventListener('click', () => {
@@ -32,15 +59,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     navLinks.forEach(link => {
-        
+        // Skip external links
         if (link.getAttribute('target') === '_blank') return;
         
         link.addEventListener('click', (e) => {
             e.preventDefault();
             
             const targetPageId = link.getAttribute('data-page');
-
+            let newURL = window.location.origin;
             
+            // Update URL based on page
+            if (targetPageId === 'about') {
+                newURL += '/about';
+            }
+            // For home page, just use base URL
+            
+            // Update browser history
+            window.history.pushState({}, '', newURL);
+            
+            // Show the correct page
             pages.forEach(page => {
                 page.classList.remove('active');
                 if (page.id === targetPageId) {
@@ -48,18 +85,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            
+            // Update active nav link
             navLinks.forEach(navLink => navLink.classList.remove('active'));
             link.classList.add('active');
             
-            
+            // Close mobile menu if open
             if(navMenu.classList.contains('active')) {
                 navMenu.classList.remove('active');
                 burger.classList.remove('toggle');
             }
         });
     });
-    
+
+    // Handle browser back/forward buttons
+    window.addEventListener('popstate', showPageFromURL);
 
     // --- Copy Script Button ---
     const copyBtn = document.getElementById('copyBtn');
