@@ -25,6 +25,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const navMenu = document.getElementById('nav-links');
     const burger = document.getElementById('burger-menu');
 
+    // --- Burger Menu Toggle ---
+    burger.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        burger.classList.toggle('toggle');
+    });
+
     navLinks.forEach(link => {
         
         if (link.getAttribute('target') === '_blank') return;
@@ -52,12 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 burger.classList.remove('toggle');
             }
         });
-    });
-
-    // --- Burger Menu Toggle ---
-    burger.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-        burger.classList.toggle('toggle');
     });
     
 
@@ -94,19 +94,5 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('mousemove', function(e) {
         floatingScript.style.left = (e.pageX + 15) + 'px';
         floatingScript.style.top = (e.pageY + 15) + 'px';
-    });
-
-    // --- Script Cards Copy Functionality ---
-    document.querySelectorAll('.script-copy').forEach(button => {
-        button.addEventListener('click', function() {
-            const scriptText = this.parentElement.querySelector('.script-code').textContent;
-            navigator.clipboard.writeText(scriptText).then(() => {
-                const originalText = this.textContent;
-                this.textContent = 'Copied!';
-                setTimeout(() => {
-                    this.textContent = originalText;
-                }, 2000);
-            });
-        });
     });
 });
