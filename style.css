@@ -44,7 +44,7 @@ body {
     padding: 0 20px;
 }
 
-/* Header Styles - FIXED */
+/* Header Styles */
 .header {
     background: var(--header-bg);
     backdrop-filter: blur(10px);
@@ -414,11 +414,6 @@ body {
 }
 
 .skill-item {
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 8px 12px;
-    border-radius: 5px;
-    text-align: center;
-    font-size: 0.9rem;
     background: var(--background-blue);
     padding: 10px;
     border-radius: 8px;
